@@ -1,0 +1,5 @@
+development:
+  adapter: postgresql
+  database: rps_tournament
+  pool: 5
+  timeout: 5000
