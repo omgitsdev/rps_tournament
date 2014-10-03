@@ -1,0 +1,21 @@
+<h1> New Tournament! </h1>
+<br>
+<form action="/tournaments" method="post">
+  <label for="tournament-name-input">Name:</label>
+  <input id="name-input" type="text" name="tournament-name">
+  <ol>
+    <%for i in (0..7) do%>
+      <li>
+        <select id="player-select" name="selected_players_id[]">
+        <option value = <%=@players[i].id%> selected><%=@players[i].username%></option>
+          <% @players.each do |player| %>
+            <% if player.username != @players[i].username %>
+              <option value = <%=player.id%>><%=player.username%></option>
+            <%end%>
+          <%end%>
+        </select>
+      </li>
+    <%end%>
+  </ol>
+  <input type = "submit">
+</form>
