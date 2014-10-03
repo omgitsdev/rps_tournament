@@ -23,5 +23,12 @@ class RPS::Server < Sinatra::Application
       player_list << AR::Player.find(id)
     end
     t = RPS::Tournament.new(params["tournament-name"],player_list)
+    redirect to("/tournaments/#{t.id}")
 	end
+
+  get '/tournaments/:id' do
+    @t = AR::Tournament.find(params[:id])
+    @games = @t.games
+    erb :show_tournament
+  end
 end

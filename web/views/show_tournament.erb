@@ -1,0 +1,6 @@
+Tournament name: <%=@t.name%>
+<ol>
+  <%@games.each do |game|%>
+    <li><%=game.player_1.username%> vs <%=game.player_2.username %></li>
+  <%end%>
+</ol>
