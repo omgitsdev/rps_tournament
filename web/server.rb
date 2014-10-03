@@ -26,6 +26,11 @@ class RPS::Server < Sinatra::Application
     redirect to("/tournaments/#{t.id}")
 	end
 
+  get '/tournaments/active' do
+    @t = AR::Tournament.where(winner: nil)
+    erb :active_tournaments
+  end
+
   get '/tournaments/:id' do
     @t = AR::Tournament.find(params[:id])
     @games = @t.games

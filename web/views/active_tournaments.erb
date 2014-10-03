@@ -1,0 +1,6 @@
+Active Tournaments:
+<ol>
+  <%@t.each do |t|%>
+    <li><a href="/tournaments/<%=t.id%>"><%=t.name%></a></li>
+  <%end%>
+</ol>
