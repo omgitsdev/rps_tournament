@@ -12,6 +12,13 @@ class RPS::Server < Sinatra::Application
     erb :index
   end
 
+  get '/users' do
+    @players = AR::Player.all
+    erb :players
+  end
+
+  #TOURNAMENTS
+
   get '/tournaments/new' do
   	@players = AR::Player.all
   	erb :new_tournament
@@ -36,4 +43,10 @@ class RPS::Server < Sinatra::Application
     @games = @t.games
     erb :show_tournament
   end
+
+  #GAMES
+
+  get '/games/:id' do
+    @game = AR::Game.find(params[:id])
+    erb :show_game
 end
